@@ -1,0 +1,32 @@
+<%- include ('dash/includes/menu.ejs') %>
+
+    <body data-bs-theme="dark">
+        <div class="container files">
+            <table class="table table-hover">
+                <% files.forEach(file=> { %>
+                    <div>
+                        <tr>
+                            <td class="teste" onclick="window.location.replace('/file/<%= file %>')"><i
+                                    style="font-size: 25px;" class="fa-solid fa-file"></i>
+                                <%= file %>
+                            </td>
+                        </tr>
+                    </div>
+
+
+                    <% }) %>
+            </table>
+        </div>
+        <style>
+            button {
+                margin-right: 5px;
+            }
+
+            .files {
+                margin-top: 2%;
+            }
+
+            td:hover {
+                cursor: pointer;
+            }
+        </style>

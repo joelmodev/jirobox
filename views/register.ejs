@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <%- include ('partials/style.ejs') %>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Teste</title>
+        <style>
+            .h{
+              margin-left: 20%;
+            }
+            body{
+                overflow-x: hidden;
+            }
+          </style>
+</head>
+
+<body data-bs-theme="dark">
+    
+
+
+    <section class="vh-100">
+        <div class="h py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+              <div>
+                <div class="row g-0">
+                  
+                  <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                    <div class="card-body p-4 p-lg-5 text-black">
+                      <div class="form-outline mb-4" id="msg-response" ></div>
+                    
+                        
+                        <div class="d-flex align-items-center mb-3 pb-1">
+                          <i class="fas fa-user fa-2x me-3 text-primary"></i>
+                          <span class="h1 text-white fw-bold mb-0">Crie sua conta</span>
+                        </div>
+                        
+      
+                        <div class="form-outline mb-4">
+                            <label class="text-white" for="email">Email:</label>
+                            <input type="email"  name="email" id="email" class="form-control form-control-lg" />
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="text-white" for="username">Usuário:</label>
+                            <input type="text"  name="username" id="username" class="form-control form-control-lg" />
+                        </div>
+      
+                        <div class="form-outline mb-4">
+                            <label class="text-white">Senha:</label>
+                            <input type="password" name="password" id="password" class="form-control form-control-lg" />
+                        </div>
+      
+                        <div class="pt-1 mb-4">
+                          <button class="btn btn-primary btn-lg btn-block" onclick="register()" id="loginBtn">Cadastrar-se</button>
+                        </div>
+      
+                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Já tem uma conta? <a href="/login"
+                            style="color: #393f81;" >Entrar</a></p>
+                     
+      
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <script src="js/oauth.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+.dropdown-menu{
+    right: 0;
+  }
+  .btn-secundario{
+    color: #F7F7FE;
+    margin-left: 5px;
+}.btn-secundario:hover{
+    color: #f7f7f9;
+}
+.bg-body-secundario{
+    background: #0000d9;
+}

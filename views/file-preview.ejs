@@ -1,0 +1,58 @@
+<body data-bs-theme="dark">
+<link rel="stylesheet" href="/css/prism.css">
+<link rel="stylesheet" href="/css/prism-live.css">
+<link rel="stylesheet" href="/js/prism-live.js">
+<script src="/js/prism.js"></script>
+<script>
+    if(fileextention = html){
+        filecontent.replace("<", "&lt;") 
+        filecontent.replace(">", "&gt;") 
+    } 
+</script>
+<%- include ('dash/includes/menu.ejs') %>
+<div class="container ">
+<div class="filecaminho">
+    Arquivo atual: <span class="filelink"><%= file%></span>
+</div>
+<div class="return">
+    <a href="/dash/files"> <i class="fa-solid fa-arrow-rotate-left"></i> Retornar</a>
+</div>
+
+
+<pre class="line-numbers">
+    <code class="language-<%= fileextention %> prism-live">
+        <%= filecontent %>
+    </code>
+     
+ </pre>
+</div>
+<style>
+    .return{
+        display: inline-block;
+        background-color: var(--bs-blue);
+        color: #fff;
+        padding: 5px 12px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    
+    .return a{
+        text-decoration: none;
+        color: #fff;
+    }
+    .filecaminho{
+        background-color: #fff;
+        margin-top: 2%;
+        display: inline-block;
+        padding: 5px;
+        min-width: 90%;
+        border-radius: 5px;
+        color: #212529;
+    }
+    .filelink{
+        margin: 5px;
+        text-decoration: none;
+    }
+    
+</style>
+</body>

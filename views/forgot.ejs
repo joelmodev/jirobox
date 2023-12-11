@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <%- include ('partials/style.ejs') %>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Teste</title>
+</head>
+
+<body style="overflow-x: hidden;" data-bs-theme="dark">
+    <style>
+        .h {
+            margin-left: 20%;
+        }
+    </style>
+
+    <section class="vh-100">
+        <div class="h py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                    <div>
+                        <div class="row g-0">
+
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-black">
+                                    <div class="form-outline mb-4" id="change-msg"></div>
+
+                                    <% if(type){ %>
+                                        <div class="d-flex align-items-center mb-3 pb-1">
+                                            <i class="fas fa-user fa-2x me-3 text-primary"></i>
+                                            <span class="h1 fw-bold mb-0">Recuperar senha</span>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="password">Nova senha</label>
+                                            <input type="password" name="password" id="password"
+                                                class="form-control form-control-lg" required />
+
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="password">Confirme a nova senha</label>
+                                            <input type="password" name="password" id="passwordconfirm"
+                                                class="form-control form-control-lg" required />
+
+                                        </div>
+
+
+                                        <div class="pt-1 mb-4">
+                                            <button class="btn btn-primary btn-lg btn-block" onclick="saveReset()"
+                                                id="loginBtn">Alterar</button>
+                                        </div>
+
+
+
+
+
+                                </div>
+                                <% }else{ %>
+                                    <div class="d-flex align-items-center mb-3 pb-1">
+                                        <i class="fas fa-user fa-2x me-3 text-primary"></i>
+                                        <span class="h1 fw-bold mb-0">Recuperar senha</span>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="email">Email</label>
+                                        <input type="email" name="email" id="email" class="form-control form-control-lg"
+                                            required />
+
+                                    </div>
+
+
+                                    <div class="pt-1 mb-4">
+                                        <button class="btn btn-primary btn-lg btn-block" onclick="reset()"
+                                            id="loginBtn">Recuperar</button>
+                                    </div>
+
+
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Não tem uma conta? <a
+                                            href="/register" style="color: #393f81;">Registrar</a></p>
+
+
+                            </div>
+
+                            <% } %>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <script src="js/oauth.js"></script>
+    <script>
+        const erroMsg = document.getElementById('change-msg')
+        function saveReset() {
+            const token = window.location.search.substring("token");
+            const password = document.getElementById('password').value
+            const confirmPassword = document.getElementById('passwordconfirm').value
+
+            if (password !== confirmPassword) {
+                erroMsg.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Erro!</strong> As senhas devem ser iguais
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`
+            } else {
+                fetch("/oauth/resetpassword", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        password: password,
+                        token: token
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json; charset=UTF-8',
+                    }
+                }).then(window.location.replace('/login'))
+            }
+
+        }
+    </script>
+</body>
+
+</html>
